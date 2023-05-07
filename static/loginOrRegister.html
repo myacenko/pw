@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="pngegg1.png">
+    <link rel="stylesheet" href="loginOrRegisterStyle.css">
+    <title>Login/Register</title>
+</head>
+
+<body>
+    <div class="form" id="form">
+
+        <ul class="tab-group">
+            <li class="tab active"><a href="#signup">Зарегистрироваться</a></li>
+            <li class="tab"><a href="#login">Войти</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="signup">
+                <h1 class="signupText">Зарегистрироваться бесплатно</h1>
+
+                <form>
+
+                    <div class="top-row">
+                        <div class="field-wrap">
+                            <p class="colorWhite">Имя</p>
+                            <input type="text" required autocomplete="off" id="nameRegister" />
+                        </div>
+
+                        <div class="field-wrap">
+                            <p class="colorWhite">Фамилия</p>
+                            <input type="text" required autocomplete="off" id="surNameRegister" />
+                        </div>
+                    </div>
+
+                    <div class="field-wrap">
+                        <p class="colorWhite">Номер телефона</p>
+                        <input type="tel" value="+374" required autocomplete="off" id="phoneRegister" />
+                    </div>
+
+                    <div class="field-wrap">
+                        <p class="colorWhite">Email</p>
+                        <input type="email" required autocomplete="off" id="emailRegister" />
+                    </div>
+
+                    <div class="field-wrap">
+                        <p class="colorWhite">Пароль</p>
+                        <input type="password" required autocomplete="off" id="passwordRegister" />
+                    </div>
+
+                    <button type="button" class="button button-block" id="buttonRegister">Зарегистрироваться</button>
+
+                </form>
+
+            </div>
+
+            <div id="login">
+                <h1 class="signupText">Добро пожаловать!</h1>
+
+                <form>
+
+                    <div class="field-wrap">
+                        <p class="colorWhite">Email</p>
+                        <input type="email" required autocomplete="off" id="loginEmail" />
+                    </div>
+
+                    <div class="field-wrap">
+                        <p class="colorWhite">Пароль</p>
+                        <input type="password" required autocomplete="off" id="loginPassword" />
+                    </div>
+
+                    <button class="button button-block" id="buttonLogin" type="button">Войти</button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script src="loginScript.js"></script>
+</body>
+
+</html>
