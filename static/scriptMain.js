@@ -4,6 +4,20 @@ var secondElement;
 var alertLoginFirst = document.getElementById('alertLoginFirst')
 var alertSucc = document.getElementById('alertSucc')
 var useNumberPhone = document.getElementById('useNumberPhone')
+var helloText = document.getElementById('helloText')
+var loginButton = document.getElementById('loginButton')
+
+function onLoad() {
+
+    if (window.localStorage.getItem('logined') != null) {
+        if (window.localStorage.getItem('name') != null) {
+            loginButton.style.display = 'none'
+            helloText.style.display = 'block'
+            helloText.innerHTML = 'Привет,' + window.localStorage.getItem('name') + '!'
+        }
+
+    }
+}
 
 function clicked(id) {
     if (id === 'pre') {

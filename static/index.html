@@ -11,7 +11,7 @@
     <title>Психологический weekend</title>
 </head>
 
-<body>
+<body onload="onLoad()">
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light" style="padding-top: 0px;padding-bottom: 0px;">
         <div class="container-fluid" id="navBarMain">
             <div class="navBarBrand">
@@ -19,6 +19,7 @@
                 <p id="brandText" style="margin-right: -2rem;color: white;">Психологический weekend</p>
             </div>
             <button id="loginButton" onclick="window.location.href='loginOrRegister.html'">Логин/Регистрация</button>
+            <p class="helloText" id="helloText">Привет,Максим!</p>
         </div>
     </nav>
 
@@ -294,7 +295,7 @@
                                 <p class="card-text">Напишите честный отзыв о нашем туре в любой из социальных сетей и получите скидку в 5%</p>
                             </div>
 
-                            <center><a href="#" class="btn btn-primary mt-2">Получить</a></center>
+                            <center><a href="#dontWorks" class="btn btn-primary mt-2" onclick="elemnt=document.getElementById('dontWorks'); elemnt.style.display='block'">Получить</a></center>
                         </div>
                     </div>
                 </div>
@@ -310,7 +311,7 @@
                                 <p class="card-text">Приведите друга и получите скидку в размере 5% для вас и вашего друга</p>
 
                             </div>
-                            <center><a href="#" class="btn btn-primary mt-2">Получить</a></center>
+                            <center><a href="#dontWorks" onclick="elemnt=document.getElementById('dontWorks'); elemnt.style.display='block'" class="btn btn-primary mt-2">Получить</a></center>
                         </div>
                     </div>
                 </div>
@@ -324,11 +325,14 @@
                                 </center>
                                 <p class="card-text" style="margin-top: 5px;">Оцените и поделитесь любым постом социальной сети и получите скидку в 1%</p>
                             </div>
-                            <center><a href="#" class="btn btn-primary mt-2">Получить</a></center>
+                            <center><a href="#dontWorks" onclick="elemnt=document.getElementById('dontWorks'); elemnt.style.display='block'" class="btn btn-primary mt-2">Получить</a></center>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="alert alert-danger" role="alert" id="dontWorks">
+            Акции временно не работают
         </div>
     </section>
 
@@ -352,19 +356,19 @@
             <div class="row" id="secondRowOfConnection">
                 <div class="col-12" id="connectWithUsSecond">
                     <div class="connectionContainer">
-                        <p class="connectionText">Мы в Telegram</p>
+                        <p class="connectionText" id="telegramText">Мы в Telegram</p>
                         <button class="connectionButton"><img src="img/telegram.png" class="connectionPhoto"/></button>
                     </div>
                     <div class="connectionContainer">
-                        <p class="connectionText">Мы в Instagram</p>
+                        <p class="connectionText" id="instaText">Мы в Instagram</p>
                         <button class="connectionButton"><img src="img/instagram.png" class="connectionPhoto"/></button>
                     </div>
                     <div class="connectionContainer">
-                        <p class="connectionText">Мы в Facebook</p>
+                        <p class="connectionText" id="faceText">Мы в Facebook</p>
                         <button class="connectionButton"><img src="img/facebook.png" class="connectionPhoto"/></button>
                     </div>
                     <div class="connectionContainer">
-                        <p class="connectionText">Мы в VK</p>
+                        <p class="connectionText" id="vkText">Мы в VK</p>
                         <button class="connectionButton"><img src="img/vk.png" class="connectionPhoto"/></button>
                     </div>
 

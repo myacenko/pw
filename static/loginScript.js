@@ -8,8 +8,6 @@ passwordRegister = document.getElementById('passwordRegister')
 var errorPhoneRegister = false
 var errorPasswordRegister = false;
 var ButtonLogin = document.getElementById('buttonLogin')
-var loginEmail = document.getElementById('loginEmail')
-var loginPassword = document.getElementById('loginPassword')
 var form = document.getElementById('form')
 
 $('.form').find('input, textarea').on('keyup blur focus', function(e) {
@@ -110,13 +108,92 @@ buttonRegister.onclick = async function() {
         }).then((res) => res.json())
         if (result.status === 'ok') {
             localStorage.setItem('logined', 'logined')
+            localStorage.setItem('name', result.data)
             window.location.href = 'index.html'
         }
     }
 }
-buttonLogin.onclick = function() {
-    if (loginEmail.value == 'admin@sss' && loginPassword.value == 'admin') {
-        localStorage.setItem('logined', 'logined')
-        window.location.href = 'index.html'
+var loginEmail = document.getElementById('loginEmail')
+var loginPassword = document.getElementById('loginPassword')
+var errorLogin = false
+buttonLogin.onclick = async function() {
+    var loginEmailValue = loginEmail.value
+    var loginPasswordValue = loginPassword.value
+    if (loginEmail.value = '' || loginPassword.value == '') {
+        errorLogin = true
+        loginEmail.value = 'одно/несколько полей не заполенены'
+        loginEmail.style.border = '1px solid red'
+        loginEmail.style.color = 'red'
+        loginPassword.type = 'text'
+        loginPassword.value = 'одно/несколько полей не заполенены'
+        loginPassword.style.border = '1px solid red'
+        loginPassword.style.color = 'red'
+        setTimeout(() => {
+            loginEmail.value = ' '
+            loginEmail.style.border = '1px solid #a0b3b0'
+            loginEmail.style.color = 'white'
+            loginPassword.value = ''
+            loginPassword.type = 'password'
+            loginPassword.style.border = '1px solid #a0b3b0'
+            loginPassword.style.color = 'white'
+            errorLogin = false
+        }, 2500)
     }
+
+    if (!errorLogin) {
+        try {
+            const result = await fetch('/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    loginEmailValue,
+                    loginPasswordValue
+                })
+            }).then((res) => res.json())
+            loginEmail.value = ''
+            loginPassword.value = ''
+            if (result.status == 'error' && result.error == 'errorUserName') {
+                errorLogin = true
+                loginEmail.value = 'Пользователя с таким email не существует'
+                loginEmail.style.border = '1px solid red'
+                loginEmail.style.color = 'red'
+                setTimeout(() => {
+                    loginEmail.value = ''
+                    loginEmail.style.border = '1px solid #a0b3b0'
+                    loginEmail.style.color = 'white'
+                    errorLogin = false
+                }, 2500)
+            } else if (result.status == 'error' && result.error == 'logOrPasInc') {
+                errorLogin = true
+                loginEmail.value = 'логин/пароль не правельные'
+                loginEmail.style.border = '1px solid red'
+                loginEmail.style.color = 'red'
+                loginPassword.type = 'text'
+                loginPassword.value = 'логин/пароль не правельные'
+                loginPassword.style.border = '1px solid red'
+                loginPassword.style.color = 'red'
+                setTimeout(() => {
+                    loginEmail.value = ' '
+                    loginEmail.style.border = '1px solid #a0b3b0'
+                    loginEmail.style.color = 'white'
+                    loginPassword.value = ''
+                    loginPassword.type = 'password'
+                    loginPassword.style.border = '1px solid #a0b3b0'
+                    loginPassword.style.color = 'white'
+                    errorLogin = false
+                }, 2500)
+            } else if (result.status == 'ok') {
+                localStorage.setItem('logined', 'logined')
+                localStorage.setItem('name', result.data)
+                window.location.href = 'index.html'
+            }
+
+        } catch (exceprion) {
+            console.log(exceprion)
+        }
+    }
+
+
 }

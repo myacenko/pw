@@ -41,13 +41,14 @@ app.post('/api/register', async(req, res) => {
                 passwordValue
             })
             console.log('UserCreated suc ' + response)
+            res.json({ status: 'ok', data: nameValue })
         } else {
             return res.json({ status: 'error', error: 'Login|Email already used' })
         }
     } catch (error) {
         console.log("Error than user create:" + error)
     }
-    res.json({ status: 'ok' })
+
 })
 app.post('/api/registerByPhone', async(req, res) => {
     const { inputNumberVal } = req.body
@@ -61,4 +62,22 @@ app.post('/api/registerByPhone', async(req, res) => {
         return
     }
     res.json({ status: 'ok' })
+})
+app.post('/api/login', async(req, res) => {
+    const { loginEmailValue: emailValue, loginPasswordValue } = req.body
+    const user = await userModel.findOne({ emailValue }).lean()
+    try {
+        if (user == null) {
+            return res.json({ status: 'error', error: 'errorUserName' })
+        } else {
+            if (await bcryptjs.compare(loginPasswordValue, user.passwordValue)) {
+                return res.json({ status: 'ok', data: user.nameValue })
+            } else {
+                return res.json({ status: 'error', error: 'logOrPasInc' })
+            }
+        }
+    } catch (findException) {
+        console.log(findException)
+    }
+    res.json({ status: 'error' })
 })
