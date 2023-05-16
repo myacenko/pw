@@ -1,6 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Roboto+Slab:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Raleway:wght@300&family=Roboto+Slab:wght@300;400;500&display=swap');
 @media (max-width: 1000px) {
+    .checkImg {
+        position: absolute;
+        top: 20%;
+        left: 24%;
+        z-index: 5;
+        margin-right: 4rem;
+        color: black;
+        text-align: center;
+        font-size: 1.5rem;
+        font-family: 'Roboto Slab', serif;
+    }
+    .classForMedia {
+        margin-bottom: 2.2rem;
+    }
+    .buttonsHeader {
+        position: absolute;
+        top: 47%;
+        left: 24%;
+        z-index: 5;
+    }
+    .whatAboutTour {
+        position: absolute;
+        top: 35%;
+        left: 24%;
+        z-index: 5;
+        font-size: 1.2rem;
+        font-family: 'Roboto Slab', serif;
+    }
     #brandText {
         display: none;
     }
@@ -67,6 +98,16 @@
         width: 99%;
         height: 85%;
     }
+    .photoVeronica {
+        margin-top: 1rem;
+        width: 99%;
+        height: 85%;
+    }
+    .photos1 {
+        margin-top: 1rem;
+        width: 99%;
+        height: 85%;
+    }
     #carouselId {
         width: 100%;
         margin-bottom: 2rem;
@@ -98,7 +139,7 @@
     .connectionText {
         margin-right: 2rem;
         font-size: 14px;
-        font-family: 'Roboto Slab', serif;
+        font-family: 'Montserrat', sans-serif;
     }
     .phoneNumbers {
         font-size: 14px;
@@ -115,6 +156,36 @@
 }
 
 @media(min-width: 1001px) {
+    .checkImg {
+        font-size: 2.2rem;
+        font-family: 'Roboto Slab', serif;
+        position: absolute;
+        top: 30%;
+        left: 37%;
+        z-index: 5;
+    }
+    .buttonsHeader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        position: absolute;
+        top: 48%;
+        left: 37%;
+        z-index: 5;
+    }
+    .whatAboutTour {
+        position: absolute;
+        top: 39.5%;
+        left: 37%;
+        z-index: 5;
+        font-size: 1.75rem;
+        font-family: 'Roboto Slab', serif;
+    }
+    .photos1 {
+        height: 90%;
+        width: 45%;
+    }
     #carouselId {
         width: 60%;
         margin-bottom: 2rem;
@@ -190,13 +261,11 @@
         width: 451px;
         height: 400px;
     }
-    #tatulWife {
-        margin-top: 1rem;
-        width: 70%;
-        height: 85%;
-    }
     #carPhoto {
         width: 70%;
+    }
+    .photoVeronica {
+        width: 45%;
     }
     .connectionButton {
         height: 60px !important;
@@ -231,6 +300,13 @@
     color: whitesmoke;
 }
 
+.connectionTextSecond {
+    color: black;
+    margin-right: 2rem;
+    font-size: 14px;
+    font-family: 'Raleway', sans-serif;
+}
+
 #registrationButton {
     width: 175px;
     height: 45px;
@@ -248,7 +324,7 @@
 }
 
 #navBarMain {
-    background-color: #9F3ED5;
+    background-color: #000080;
     padding-top: 0px;
     padding-bottom: 0px;
 }
@@ -306,6 +382,12 @@
     padding-top: 2rem;
 }
 
+body,
+html {
+    padding: 0px;
+    margin: 0px;
+}
+
 #actions {
     background-color: whitesmoke;
     padding-left: 2rem;
@@ -332,4 +414,111 @@
 .sendReq:hover {
     background-color: red;
     color: white;
+}
+
+.check {
+    overflow: hidden;
+    width: 98.92vw;
+    position: relative;
+}
+
+#photo1 {
+    position: static;
+    z-index: 2;
+}
+
+#buttonForBron {
+    text-decoration: none;
+    text-align: center;
+    background: rgb(6, 14, 131);
+    background: linear-gradient(0deg, rgba(6, 14, 131, 1) 0%, rgba(12, 25, 180, 1) 100%);
+    border: none;
+}
+
+#buttonForBron:hover {
+    color: black;
+    background: rgb(0, 3, 255);
+    background: linear-gradient(0deg, rgba(0, 3, 255, 1) 0%, rgba(2, 126, 251, 1) 100%);
+}
+
+.customButton {
+    width: 12rem;
+    height: 50px;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 40px;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    text-align: center;
+    display: block;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5), 7px 7px 20px 0px rgba(0, 0, 0, .1), 4px 4px 5px 0px rgba(0, 0, 0, .1);
+    outline: none;
+}
+
+.image {
+    transition-duration: .2s;
+    transition-timing-function: linear;
+    transition-delay: .3s;
+    opacity: 0.75;
+    max-width: 100%;
+    animation: fade 5s linear infinite;
+    animation-delay: 2.5s;
+    object-fit: cover;
+    height: 87.2vh;
+    width: 100%;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 1
+    }
+    50% {
+        opacity: 0.12
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+#buttonAbout {
+    background: rgb(22, 9, 240);
+    background: linear-gradient(0deg, rgba(22, 9, 240, 1) 0%, rgba(49, 110, 244, 1) 100%);
+    color: #fff;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+#buttonAbout:after {
+    position: absolute;
+    content: " ";
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease;
+    -webkit-transform: scale(.1);
+    transform: scale(.1);
+}
+
+#buttonAbout:hover {
+    color: #fff;
+    border: none;
+    background: transparent;
+}
+
+#buttonAbout:hover:after {
+    background: rgb(0, 3, 255);
+    background: linear-gradient(0deg, rgba(2, 126, 251, 1) 0%, rgba(0, 3, 255, 1)100%);
+    -webkit-transform: scale(1);
+    transform: scale(1);
 }

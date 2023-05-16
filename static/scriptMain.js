@@ -6,9 +6,20 @@ var alertSucc = document.getElementById('alertSucc')
 var useNumberPhone = document.getElementById('useNumberPhone')
 var helloText = document.getElementById('helloText')
 var loginButton = document.getElementById('loginButton')
+var currentIndex = 1;
+const photo1 = document.getElementById('photo1')
+const delay = 5000
+var currentIndex = 1
 
 function onLoad() {
-
+    setInterval(function() {
+        // alert(currentIndex)
+        currentIndex++;
+        photo1.src = '/img/helloSection/photoSection' + currentIndex + '.jpg'
+        if (currentIndex >= 3) {
+            currentIndex = 1;
+        }
+    }, delay);
     if (window.localStorage.getItem('logined') != null) {
         if (window.localStorage.getItem('name') != null) {
             loginButton.style.display = 'none'
