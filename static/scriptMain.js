@@ -61,13 +61,31 @@ function clicked(id) {
         }
     }
 }
-
-function checkLogin() {
+var userPhone;
+var getCall = false
+async function checkLogin() {
     if (window.localStorage.getItem('logined') == null) {
         alertLoginFirst.style.display = 'block'
         useNumberPhone.style.display = 'block'
     } else {
+        getCall = true
         alertLoginFirst.style.display = 'none'
+        userPhone = localStorage.getItem('phone')
+        if (userPhone != null) {
+            const result = await fetch('/api/getByToken', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    userPhone,
+                    getCall
+                })
+            }).then((res) => res.json())
+            if (result.status === 'ok') {
+
+            }
+        }
         alertSucc.style.display = 'block'
         useNumberPhone.style.display = 'none'
     }
@@ -161,8 +179,11 @@ async function sendRequestByPhoneNumber() {
                 })
             }).then((res) => res.json())
             if (result.status === 'ok') {
+
                 alertSucc.style.display = 'block'
                 localStorage.setItem('logined', 'logined')
+                localStorage.setItem('phone', result.phone)
+                checkLogin();
             }
         }
     }

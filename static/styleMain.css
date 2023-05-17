@@ -125,6 +125,7 @@
         margin-right: 2rem;
     }
     .connectionButton {
+        display: none;
         height: 45px !important;
         width: 45px !important;
         border-radius: 50%;
@@ -268,6 +269,7 @@
         width: 45%;
     }
     .connectionButton {
+        display: none;
         height: 60px !important;
         width: 60px !important;
         border-radius: 50%;
@@ -301,6 +303,7 @@
 }
 
 .connectionTextSecond {
+    display: none;
     color: black;
     margin-right: 2rem;
     font-size: 14px;

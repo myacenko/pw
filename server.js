@@ -2,6 +2,7 @@ const path = require('path')
 const express = require('express')
 const userModel = require('./model/userModel')
 const userModelByPhone = require('./model/userModelByPhone')
+const getCallModel = require('./model/getCallModel')
 const bcryptjs = require('bcryptjs')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
@@ -41,7 +42,7 @@ app.post('/api/register', async(req, res) => {
                 passwordValue
             })
             console.log('UserCreated suc ' + response)
-            res.json({ status: 'ok', data: nameValue })
+            res.json({ status: 'ok', data: nameValue, phone: phoneValue })
         } else {
             return res.json({ status: 'error', error: 'Login|Email already used' })
         }
@@ -59,6 +60,20 @@ app.post('/api/registerByPhone', async(req, res) => {
         console.log('UserCreated suc ' + response)
     } catch (error) {
         console.log("Error than user create:" + error)
+        return
+    }
+    res.json({ status: 'ok', phone: inputNumberVal })
+})
+app.post('/api/getByToken', async(req, res) => {
+    const { userPhone, getCall } = req.body
+    try {
+        const response = await getCallModel.create({
+            userPhone,
+            getCall
+        })
+        console.log('Call created suc ' + response)
+    } catch (error) {
+        console.log("Error than call create:" + error)
         return
     }
     res.json({ status: 'ok' })

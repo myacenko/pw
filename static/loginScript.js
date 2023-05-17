@@ -187,6 +187,13 @@ buttonLogin.onclick = async function() {
             } else if (result.status == 'ok') {
                 localStorage.setItem('logined', 'logined')
                 localStorage.setItem('name', result.data)
+                if (localStorage.getItem('phone') == null) {
+                    localStorage.setItem('phone', result.phone)
+                } else {
+                    localStorage.removeItem('phone')
+                    localStorage.setItem('phone', result.phone)
+                }
+
                 window.location.href = 'index.html'
             }
 
