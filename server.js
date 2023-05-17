@@ -9,7 +9,7 @@ const jwt = require('jsonwebtoken')
 const JWTSECRET = 'sdshdsjaijdsajkdakjslfdsadkjadsadadadasa'
 app = express()
 try {
-    mongoose.connect('mongodb+srv://admin:771Moe33@cluster0.yqeqbpb.mongodb.net/test', {
+    mongoose.connect('mongodb+srv://admin:admin228@cluster0.tji3hqp.mongodb.net/', {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
