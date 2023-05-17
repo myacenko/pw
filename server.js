@@ -19,7 +19,7 @@ try {
 
 app.use(bodyParser.json())
 
-app.listen(3000, () => {
+app.listen(80, () => {
     console.log("Server started")
 })
 
