@@ -9,6 +9,43 @@ var errorPhoneRegister = false
 var errorPasswordRegister = false;
 var ButtonLogin = document.getElementById('buttonLogin')
 var form = document.getElementById('form')
+var loaderAnim = document.getElementById('loaderAnim')
+var labelReg = document.getElementById('labelReg')
+var labelLogin = document.getElementById('labelLogin')
+var login = document.getElementById('login')
+var formRegister = document.getElementById('formRegister')
+var logo = document.getElementById('logo')
+labelLogin.onclick = () => {
+    login.style.display = 'block'
+}
+labelReg.onclick = () => {
+    formRegister.style.display = 'block'
+}
+logo.onclick = () => {
+    loaderAnim.classList.add('loader--active')
+    setTimeout(() => {
+        window.location.href = 'index.html'
+    }, 3000);
+
+}
+
+function onLoad() {
+    if (sessionStorage.getItem('Location') === 'mainToRegister') {
+        loaderAnim.classList.remove('loader--active')
+        labelReg.classList.add('active')
+        labelLogin.classList.remove('active')
+        login.style.display = 'none'
+        formRegister.style.display = 'block'
+    } else if (sessionStorage.getItem('Location') === 'mainToLogin') {
+        loaderAnim.classList.remove('loader--active')
+        labelLogin.classList.add('active')
+        labelReg.classList.remove('active')
+        login.style.display = 'block'
+        formRegister.style.display = 'none'
+    }
+    sessionStorage.setItem("Location", 'login/reg');
+}
+
 
 $('.form').find('input, textarea').on('keyup blur focus', function(e) {
 

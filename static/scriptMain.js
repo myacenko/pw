@@ -10,12 +10,183 @@ var currentIndex = 1;
 const photo1 = document.getElementById('photo1')
 const delay = 5000
 var currentIndex = 1
+var flatContainer = document.getElementById('flatContainer')
+var counterOfImgSocials = 1
+var valueOfTraslate = -5
+var imgSocialsMap = new Map()
+var flatIconClicked = false
+var loaderAnim = document.getElementById('loaderAnim')
+var dropDownClicked = false
+var loginLink = document.getElementById('loginLink')
+var registrationLink = document.getElementById('registrationLink')
+loginLink.onclick = () => {
+    loaderAnim.classList.add('loader--active')
+    sessionStorage.setItem("Location", 'mainToLogin');
+    window.setTimeout(function() {
+        window.location.href = 'loginOrRegister.html'
+    }, 2800)
+}
+registrationLink.onclick = () => {
+    loaderAnim.classList.add('loader--active')
+    sessionStorage.setItem("Location", 'mainToRegister');
+    window.setTimeout(function() {
+        window.location.href = 'loginOrRegister.html'
+    }, 2800)
+}
+
+var showInfo1 = document.getElementById('showInfo1')
+var clickShowInfo1 = false
+showInfo1.onclick = () => {
+    var specialContainer1 = document.getElementById('specialContainer1')
+    if (!clickShowInfo1) {
+        specialContainer1.style.display = 'flex'
+        window.setTimeout(function() {
+            specialContainer1.style.opacity = '1'
+        }, 50)
+        showInfo1.innerText = 'Скрыть информацию'
+        clickShowInfo1 = true
+    } else {
+        specialContainer1.style.opacity = '0'
+        window.setTimeout(function() {
+            specialContainer1.style.display = 'none'
+        }, 2500)
+        showInfo1.innerText = 'Скрыть информацию'
+        clickShowInfo1 = false
+    }
+
+}
+
+var showInfo2 = document.getElementById('showInfo2')
+var clickShowInfo2 = false
+showInfo2.onclick = () => {
+    var specialContainer2 = document.getElementById('specialContainer2')
+    if (!clickShowInfo2) {
+        specialContainer2.style.display = 'flex'
+        window.setTimeout(function() {
+            specialContainer2.style.opacity = '1'
+        }, 50)
+        showInfo2.innerText = 'Скрыть информацию'
+        clickShowInfo2 = true
+    } else {
+        specialContainer2.style.opacity = '0'
+        window.setTimeout(function() {
+            specialContainer2.style.display = 'none'
+        }, 2500)
+        showInfo2.innerText = 'Скрыть информацию'
+        clickShowInfo2 = false
+    }
+
+}
+var showInfo3 = document.getElementById('showInfo3')
+var clickShowInfo3 = false
+showInfo3.onclick = () => {
+    var specialContainer3 = document.getElementById('specialContainer3')
+    if (!clickShowInfo3) {
+        specialContainer3.style.display = 'flex'
+        window.setTimeout(function() {
+            specialContainer3.style.opacity = '1'
+        }, 50)
+        showInfo3.innerText = 'Скрыть информацию'
+        clickShowInfo3 = true
+    } else {
+        specialContainer3.style.opacity = '0'
+        window.setTimeout(function() {
+            specialContainer3.style.display = 'none'
+        }, 2500)
+        showInfo3.innerText = 'Скрыть информацию'
+        clickShowInfo3 = false
+    }
+
+}
+
+
+
+
+function onMouseEnterDrop() {
+    if (!dropDownClicked) {
+        openDropDownNav()
+    }
+}
+var goTopActionButonId = document.getElementById('goTopActionButonId')
+window.onscroll = function(e) {
+    if (window.scrollY > 1000)
+        goTopActionButonId.style.opacity = '1'
+    else
+        goTopActionButonId.style.opacity = '0'
+};
+
+function onMouseLeaveMenu() {
+    if (dropDownClicked) {
+        closeDropDownNav()
+    }
+}
+
+function flatClicked() {
+    if (!flatIconClicked) {
+        openFlat()
+    } else {
+        closeFlat()
+    }
+
+}
+
+function openDropDownNav() {
+    document.getElementById("myDropdown").classList.add("show");
+    dropDownClicked = true
+}
+
+function closeDropDownNav() {
+    document.getElementById("myDropdown").classList.remove("show");
+    dropDownClicked = false
+}
+
+function openFlat() {
+
+    if (flatIconClicked === false) {
+        counterOfImgSocials = 1
+        flatContainer.style.transform = 'rotate(360deg)'
+        while (counterOfImgSocials <= 4) {
+            imgSocialsMap.get('imgSocials' + counterOfImgSocials).style.opacity = '1'
+            imgSocialsMap.get('imgSocials' + counterOfImgSocials).style.transform = 'translateY(' + valueOfTraslate * 1 + 'rem)'
+            counterOfImgSocials++
+        }
+    }
+}
+
+function closeFlat() {
+    if (flatIconClicked === false) {
+        counterOfImgSocials = 1
+        flatContainer.style.transform = 'rotate(-360deg)'
+        while (counterOfImgSocials <= 4) {
+            imgSocialsMap.get('imgSocials' + counterOfImgSocials).style.opacity = '0'
+            counterOfImgSocials++
+        }
+    }
+}
+
+
+var loaderAnim1 = document.getElementById('loaderAnim1')
 
 function onLoad() {
+    while (true) {
+        element = document.getElementById('imgSocials' + counterOfImgSocials)
+        if (element !== null)
+            imgSocialsMap.set('imgSocials' + counterOfImgSocials, element)
+        else
+            break
+        counterOfImgSocials++
+    }
+    if (sessionStorage.getItem('Location') == 'login/reg') {
+        loaderAnim1.style.display = 'block'
+        window.setTimeout(function() {
+            loaderAnim1.classList.remove('loader--active')
+        }, 100)
+    }
+    sessionStorage.setItem('Location', 'main')
     setInterval(function() {
         // alert(currentIndex)
         currentIndex++;
-        photo1.src = '/img/helloSection/photoSection' + currentIndex + '.jpg'
+        photo1.src = './img/helloSection/photoSection' + currentIndex + '.jpg'
         if (currentIndex >= 3) {
             currentIndex = 1;
         }
@@ -29,38 +200,11 @@ function onLoad() {
 
     }
 }
+var caruselPhoto = document.getElementById('caruselPhoto')
+var counterOfPhotos = 1;
+var divCaruselCont = document.getElementById('divCaruselCont')
+var coruselAllButtonContainerAllId = document.getElementById('coruselAllButtonContainerAllId')
 
-function clicked(id) {
-    if (id === 'pre') {
-        if (counter == 1) {
-            secondElement = document.getElementById('c' + counter)
-            secondElement.classList.remove('active')
-            counter = 6
-            element = document.getElementById('c' + counter)
-            element.classList.add('active')
-        } else {
-            secondElement = document.getElementById('c' + counter)
-            secondElement.classList.remove('active')
-            counter--
-            element = document.getElementById('c' + counter)
-            element.classList.add('active')
-        }
-    } else if (id === 'next') {
-        if (counter == 6) {
-            secondElement = document.getElementById('c' + counter)
-            secondElement.classList.remove('active')
-            counter = 1
-            element = document.getElementById('c' + counter)
-            element.classList.add('active')
-        } else {
-            secondElement = document.getElementById('c' + counter)
-            secondElement.classList.remove('active')
-            counter++
-            element = document.getElementById('c' + counter)
-            element.classList.add('active')
-        }
-    }
-}
 var userPhone;
 var getCall = false
 async function checkLogin() {
